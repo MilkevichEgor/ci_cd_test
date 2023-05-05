@@ -3,7 +3,7 @@ stages:
   - deploy
 
 build:
-  stage: deploy
+  stage: build
   image: node
   script: 
     - npm i
