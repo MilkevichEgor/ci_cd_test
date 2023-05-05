@@ -5,6 +5,7 @@ stages:
 deploy:
   stage: deploy    
   before_script:
+    - apk add --update --no-cache git
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
     - mkdir -p ~/.ssh
     - eval $(ssh-agent -s)
@@ -15,5 +16,5 @@ deploy:
     - sudo apt update && apt install openssh-server
     # - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "cd /home/fusion/project_em; touch file1"
     # # - chmod og= $SSH_PRIVATE_KEY
-    - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "cd /home/fusion/project_em/books-store; git pull"
-    - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "cd /home/fusion/project_em/books-store; docker compose up -d"
+    - ssh -i $SSH_PRIVATE_KEY $SERVER_USER@$SERVER_IP "cd /home/fusion/project_em/books-store; git pull"
+    - ssh -i $SSH_PRIVATE_KEY $SERVER_USER@$SERVER_IP "cd /home/fusion/project_em/books-store; docker compose up -d"
