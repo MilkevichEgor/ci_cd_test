@@ -1,26 +1,16 @@
-build-job:
-  image: node
-  script:
-    - npm install
-    - npm run build
-  artifacts:
-    paths:
-      - "build/"
-
-
-# stages:
-#   - deploy
+stages:
+  - deploy
   
-# deploy:
-#   stage: deploy    
-#   before_script:
-#     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-#     - mkdir -p ~/.ssh
-#     - eval $(ssh-agent -s)
-#     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-#   script:
-#     - sudo apt update && apt install openssh-server
-#     # - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "cd /home/fusion/project_em; touch file1"
-#     # # - chmod og= $SSH_PRIVATE_KEY
-#     - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "cd /home/fusion/project_em/books-store; git pull"
-#     - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "cd /home/fusion/project_em/books-store; docker compose up -d"
+deploy:
+  stage: deploy    
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - mkdir -p ~/.ssh
+    - eval $(ssh-agent -s)
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - sudo apt update && apt install openssh-server
+    # - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "cd /home/fusion/project_em; touch file1"
+    # # - chmod og= $SSH_PRIVATE_KEY
+    - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "cd /home/fusion/project_em/books-store; git pull"
+    - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "cd /home/fusion/project_em/books-store; docker compose up -d"
