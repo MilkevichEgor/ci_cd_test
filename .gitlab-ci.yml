@@ -3,15 +3,19 @@ stages:
 
 deploy:
   stage: deploy
-  before_script:
-     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-     - eval $(ssh-agent -s)
-     - chmod 700 "$SSH_PRIVATE_KEY"
-     - ssh-add "$SSH_PRIVATE_KEY"
-     - mkdir -p ~/.ssh
-     - chmod 400 ~/.ssh
-  script:
-    - echo "here log"
-    # - chmod og= $SSH_PRIVATE_KEY
-    # - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "git pull"
-    # - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker compose up -d"
+  image: node
+  script: 
+    - npm i
+    - npm run build
+  # before_script:
+  #    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+  #    - eval $(ssh-agent -s)
+  #    - chmod 700 "$SSH_PRIVATE_KEY"
+  #    - ssh-add "$SSH_PRIVATE_KEY"
+  #    - mkdir -p ~/.ssh
+  #    - chmod 400 ~/.ssh
+  # script:
+  #   - echo "here log"
+  #   - chmod og= $SSH_PRIVATE_KEY
+  #   - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "git pull"
+  #   - ssh -i $SSH_PRIVATE_KEY -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP "docker compose up -d"
