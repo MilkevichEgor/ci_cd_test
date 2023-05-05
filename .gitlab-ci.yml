@@ -15,6 +15,7 @@ deploy:
     # - ssh-add "$SSH_PRIVATE_KEY"
     # - mkdir -p ~/.ssh
     # - chmod 700 ~/.ssh
+    # 
   script:
     - ssh-add <(echo "$SSH_PRIVATE_KEY" | tr -d '\r')
     - sudo apt update && apt install openssh-server
