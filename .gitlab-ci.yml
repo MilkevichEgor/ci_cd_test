@@ -5,10 +5,10 @@ stages:
 services:
   - postgres:latest
 variables:
-  POSTGRES_DB: "fusiondb"
+  POSTGRES_DB: fusiondb
   POSTGRES_HOST: postgres
-  POSTGRES_USER: "fusion"
-  POSTGRES_PASSWORD: "fusion"
+  POSTGRES_USER: fusion
+  POSTGRES_PASSWORD: fusion
   
 deploy:
   stage: deploy    
