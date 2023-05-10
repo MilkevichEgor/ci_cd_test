@@ -5,14 +5,14 @@ stages:
 services:
   - postgres:latest
   
-variables:
-  POSTGRES_DB: fusiondb
-  POSTGRES_USER: fusion
-  POSTGRES_PASSWORD: fusion
-  POSTGRES_HOST: postgres
-  POSTGRES_PORT: 5432
-  POSTGRES_HOST_AUTH_METHOD: trust
-  NODE_ENV: test
+# variables:
+#   POSTGRES_DB: fusiondb
+#   POSTGRES_USER: fusion
+#   POSTGRES_PASSWORD: fusion
+#   POSTGRES_HOST: postgres
+#   POSTGRES_PORT: 5432
+#   POSTGRES_HOST_AUTH_METHOD: trust
+#   NODE_ENV: test
   
 deploy:
   stage: deploy    
