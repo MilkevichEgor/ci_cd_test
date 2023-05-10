@@ -1,6 +1,14 @@
 image: docker:latest
 stages:
   - deploy
+
+services:
+  - postgres:latest
+variables:
+  POSTGRES_DB: "fusiondb"
+  POSTGRES_HOST: postgres
+  POSTGRES_USER: "fusion"
+  POSTGRES_PASSWORD: "fusion"
   
 deploy:
   stage: deploy    
