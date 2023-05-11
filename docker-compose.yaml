@@ -50,4 +50,4 @@ services:
       POSTGRES_USER: "fusion"
       POSTGRES_PASSWORD: "fusion"
     ports:
-      - "5434:5432"
+      - "5435:5432"
