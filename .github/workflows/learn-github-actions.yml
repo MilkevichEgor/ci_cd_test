@@ -44,6 +44,7 @@ jobs:
           host_fingerprint: ${{secrets.HOST_FINGERPRINT}}
           command: |
             cd ${{ secrets.PROJECT_FOLDER }};
+            command: echo 'hello world' # Command to be executed - Default: echo 'hello world' - optional
             git checkout main;
             git pull;
             docker-compose --file docker compose.prod.ym down;
