@@ -45,6 +45,6 @@ jobs:
             cd ${{ secrets.PROJECT_FOLDER }};
             git checkout main;
             git pull;
-            docker-compose --file docker compose.prod.ym down;
-            docker-compose --file docker compose.prod.yml up -d;
+            docker compose down;
+            docker compose up -d;
             docker system prune --all --force;
