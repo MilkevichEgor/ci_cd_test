@@ -28,4 +28,4 @@ jobs:
             docker compose up -d;
             docker exec -i app-backend npm run db:migrate:up;
             docker exec -i app-backend npm run db:seed;
-        #    
+        
